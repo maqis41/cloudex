@@ -1,0 +1,62 @@
+# =========================================
+# Laravel Default
+# =========================================
+/vendor/
+node_modules/
+.env
+.env.backup
+.phpunit.result.cache
+.php_cs.cache
+.php_cs.dist
+Homestead.yaml
+Homestead.json
+npm-debug.log
+yarn-error.log
+
+# =========================================
+# Laravel Storage (biarkan storage/app/public, tapi ignore yang lain)
+# =========================================
+/storage/*.key
+/storage/*.log
+/storage/*.cache
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
+/storage/app/*.sqlite
+
+# JANGAN ignore storage/app/public karena berisi file user
+# tapi ignore cache di dalamnya
+/storage/app/public/*.tmp
+
+# =========================================
+# Public
+# =========================================
+/public/storage
+/public/build
+/public/hot
+/public/mix-manifest.json
+
+# =========================================
+# IDE & OS files
+# =========================================
+# VSCode
+.vscode/
+*.code-workspace
+
+# PHPStorm
+.idea/
+
+# Mac & Windows
+.DS_Store
+Thumbs.db
+
+# =========================================
+# Composer
+# =========================================
+composer.lock # (optional, lihat catatan di bawah)
+
+# =========================================
+# Node
+# =========================================
+/public/assets
