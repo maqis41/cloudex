@@ -8,16 +8,21 @@ nixPkgs = [
     "php82Extensions.curl",
     "php82Extensions.zip",
     "php82Extensions.gd",
+    "php82Extensions.fileinfo",
     "php82Extensions.bcmath",
     "php82Extensions.openssl",
     "php82Extensions.sodium",
-    "nodejs_18"
+    "nodejs-22_x"
 ]
 
 [phases.install]
 cmds = [
-    "composer install --no-dev --optimize-autoloader --no-interaction",
-    "npm ci --omit=dev"
+    "rm -rf vendor node_modules .npm",
+    "composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist",
+    "npm config set fund false",
+    "npm config set audit false",
+    "npm config set progress false",
+    "npm ci --omit=dev --legacy-peer-deps"
 ]
 
 [phases.build]

@@ -10,4 +10,15 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    optimizeDeps: {
+        exclude: ['laravel-vite-plugin'],
+    },
+    build: {
+        rollupOptions: {
+            output: {
+                manualChunks: undefined,
+            },
+        },
+        chunkSizeWarningLimit: 800,
+    },
 });
