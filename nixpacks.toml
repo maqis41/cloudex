@@ -23,6 +23,7 @@ cmds = [
     "npm config set audit false",
     "npm config set progress false",
     "npm ci --omit=dev --legacy-peer-deps"
+    "apt-get install -y default-mysql-client"
 ]
 
 [phases.build]
