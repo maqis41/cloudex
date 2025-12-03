@@ -1,5 +1,4 @@
 [phases.setup]
-# PHP 8.2 + Ekstensi yang diperlukan Laravel 12
 nixPkgs = [
     "php82",
     "php82Extensions.curl",
@@ -13,34 +12,25 @@ nixPkgs = [
     "php82Extensions.intl",
     "php82Extensions.bcmath",
     "php82Extensions.fileinfo",
-    "php82Extensions.sodium"
+    "php82Extensions.sodium",
+    "nodejs-18_x"
 ]
-
-# Node.js jika menggunakan frontend assets
-nixPkgs.nodejs = "18"
 
 [phases.install]
-# Install Composer dependencies
 cmds = [
     "curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer",
-    "composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist"
-]
-
-# Install NPM dependencies (jika ada)
-cmds = [
+    "composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist",
     "npm ci --only=production"
 ]
 
 [phases.build]
-# Persiapan Laravel untuk production
 cmds = [
     "php artisan storage:link",
     "php artisan config:cache",
     "php artisan route:cache",
     "php artisan view:cache",
-    "npm run build"  # Jika menggunakan Vite
+    "npm run build"
 ]
 
 [start]
-# Perintah untuk menjalankan aplikasi
 cmd = "php artisan serve --host=0.0.0.0 --port=$PORT"
