@@ -8,30 +8,24 @@ nixPkgs = [
     "php82Extensions.curl",
     "php82Extensions.zip",
     "php82Extensions.gd",
-    "php82Extensions.fileinfo",
     "php82Extensions.bcmath",
     "php82Extensions.openssl",
     "php82Extensions.sodium",
-    "nodejs-18_x"
+    "nodejs_18"
 ]
 
 [phases.install]
 cmds = [
-    # Install Composer dependencies
     "composer install --no-dev --optimize-autoloader --no-interaction",
-    # Install Node.js dependencies dengan permission yang benar
-    "npm config set unsafe-perm true",
     "npm ci --omit=dev"
 ]
 
 [phases.build]
 cmds = [
-    # Optimize Laravel
     "php artisan storage:link",
     "php artisan config:cache",
     "php artisan route:cache",
     "php artisan view:cache",
-    # Build frontend assets dengan permission fix
     "npm run build"
 ]
 
