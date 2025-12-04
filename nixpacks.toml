@@ -12,7 +12,8 @@ nixPkgs = [
     "php82Extensions.bcmath",
     "php82Extensions.openssl",
     "php82Extensions.sodium",
-    "nodejs",
+    "nodejs_20",
+    "nodejs_20.pkgs.npm",
     "mysql80"
 ]
 
@@ -20,11 +21,10 @@ nixPkgs = [
 cmds = [
     "rm -rf vendor node_modules .npm",
     "composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist",
-    "composer require barryvdh/laravel-dompdf",
     "npm config set fund false",
     "npm config set audit false",
     "npm config set progress false",
-    "npm ci --omit=dev --legacy-peer-deps",
+    "npm install --legacy-peer-deps"  
 ]
 
 [phases.build]
