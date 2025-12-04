@@ -12,7 +12,7 @@ nixPkgs = [
     "php82Extensions.bcmath",
     "php82Extensions.openssl",
     "php82Extensions.sodium",
-    "nodejs"
+    "nodejs",
     "mysql80"
 ]
 
